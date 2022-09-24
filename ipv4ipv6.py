@@ -1,5 +1,5 @@
 # This example requires the requests library be installed.  You can learn more
-# about the Requests library here: http://docs.python-requests.org/en/latest/
+# about the Requests library here: https://pypi.org/project/requests/
 from requests import get
 import json
 
@@ -23,7 +23,4 @@ print("\n City: " + pythonObject['city'])
 
 print("\n Region: " + pythonObject['regionName'])
 
-print("\n Country: " + pythonObject['country'] + "\n")
-
-# This print statement prints the string 
-print(json.dumps(pythonObject, sort_keys=True, indent=4))
+print("\n Country: " + pythonObject['country'])
