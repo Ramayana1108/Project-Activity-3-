@@ -3,7 +3,8 @@
 from requests import get
 import json
 
-loc = get('http://ip-api.com/json/?fields=66846719')
+# API used https://ip-api.com/
+loc = get('http://ip-api.com/json/?fields=8729')
 
 # The json.dumps method converts a Python object to a JSON formatted string.
 responseString = json.dumps(loc.json())
@@ -13,11 +14,16 @@ responseString = json.dumps(loc.json())
 # if you need to parse a JSON string into a native Python object, you have to use the json.loads() method
 pythonObject = json.loads(responseString)
 
-# This print statement prints the value of the "query" key
-print("\n Your IP address is: " + pythonObject['query'] + "\n")
+# This print statement prints the value of the query/isp/city/country key
+print("\n IPv4/IPv6: " + pythonObject['query'])
+
+print("\n ISP: " + pythonObject['isp'])
+
+print("\n City: " + pythonObject['city'])
+
+print("\n Region: " + pythonObject['regionName'])
+
+print("\n Country: " + pythonObject['country'] + "\n")
 
 # This print statement prints the string 
 print(json.dumps(pythonObject, sort_keys=True, indent=4))
-
-# This print statement prints the formatted Python dictionary
-# print(pythonObject)
