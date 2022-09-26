@@ -1,6 +1,6 @@
-# This example requires the requests library be installed.  You can learn more
-# about the Requests library here: https://pypi.org/project/requests/
+# This example requires the requests library be installed.  You can learn more about the Requests library here: https://pypi.org/project/requests/
 from requests import get
+# JSON encoder and decoder information here: https://docs.python.org/3/library/json.html
 import json
 
 # API used https://ip-api.com/
@@ -11,10 +11,10 @@ responseString = json.dumps(loc.json())
 
 # Call json.loads(json_object_string) to convert a json_object_string to a dictionary. Use dictionary indexing to access a value associated with a specific key.
 
-# if you need to parse a JSON string into a native Python object, you have to use the json.loads() method
+# If you need to parse a JSON string into a native Python object, you have to use the json.loads() method--this is now a Python dictionary.
 pythonObject = json.loads(responseString)
 
-# This print statement prints the value of the query/isp/city/country key
+# Prints the value of the query/isp/city/country key.
 print("\n IPv4/IPv6: " + pythonObject['query'])
 
 print("\n ISP: " + pythonObject['isp'])
