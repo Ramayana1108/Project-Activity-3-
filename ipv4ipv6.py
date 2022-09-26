@@ -14,13 +14,11 @@ responseString = json.dumps(loc.json())
 # If you need to parse a JSON string into a native Python object, you have to use the json.loads() method--this is now a Python dictionary.
 pythonObject = json.loads(responseString)
 
-# Prints the value of the query/isp/city/country key.
-print("\n IPv4/IPv6: " + pythonObject['query'])
-
-print("\n ISP: " + pythonObject['isp'])
-
-print("\n City: " + pythonObject['city'])
-
-print("\n Region: " + pythonObject['regionName'])
-
-print("\n Country: " + pythonObject['country'])
+# Multiline f-string print the value of the query/isp/city/country key. 
+# Read more here: https://docs.python.org/3/whatsnew/3.6.html#whatsnew36-pep498 and https://stackoverflow.com/questions/10112614/how-do-i-create-a-multiline-python-string-with-inline-variables
+print(f"""
+    IPv4/IPv6: {pythonObject['query']}
+    ISP: {pythonObject['isp']}
+    City: {pythonObject['city']}
+    Region: {pythonObject['regionName']}
+    Country: {pythonObject['country']}""")
