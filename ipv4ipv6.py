@@ -3,7 +3,7 @@ from requests import get
 # JSON encoder and decoder information here: https://docs.python.org/3/library/json.html
 import json
 
-# API used https://ip-api.com/
+# IP-API documentation: https://ip-api.com/docs
 loc = get('http://ip-api.com/json/?fields=8729')
 
 # The json.dumps method converts a Python object to a JSON formatted string.
