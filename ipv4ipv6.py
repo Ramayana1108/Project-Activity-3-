@@ -1,4 +1,3 @@
-
 # Import API access key and specific fields or types of information
 from api import apiKey, fieldsResponse
 # This example requires the requests library be installed.  You can learn more about the Requests library here: https://pypi.org/project/requests/
