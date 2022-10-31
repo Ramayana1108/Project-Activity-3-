@@ -5,6 +5,9 @@ from requests import get
 # JSON encoder and decoder information here: https://docs.python.org/3/library/json.html
 import json
 
+# tkinter used to display a window screen
+from tkinter import *
+
 # IPAPI documentation: https://ipapi.com/documentation
 apiUrl = get(f"http://api.ipapi.com/check?access_key={apiKey}&fields={fieldsResponse}")
 
@@ -23,3 +26,50 @@ print(f"""
     City: {pythonObject['city']}
     Region: {pythonObject['region_name']}
     Country: {pythonObject['country_name']}""")
+
+########################################################### Backlog 1 ###########################################################################################################################
+#Creating a text file with a write function
+file = open("Project4_Output.txt","w")
+
+#Writing text file with the output
+file.write(f"""
+    IPv4/IPv6: {pythonObject['ip']}
+    City: {pythonObject['city']}
+    Region: {pythonObject['region_name']}
+    Country: {pythonObject['country_name']}""")
+file.close()
+
+########################################################### Backlog 2 ###########################################################################################################################
+
+
+#Creating the window
+root = Tk()
+root.title('Project 4')
+
+#Height and Width of the app
+app_width =500
+app_height = 500
+
+#Finding the center of user screen
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+x = (screen_width/2) - (app_width/2)
+y= (screen_height/2) - (app_height/2)
+
+
+root.geometry(f'{app_width}x{app_height}+{int(x)}+{int(y)}')
+
+
+#Text shown
+label = Label(root, text=f"""
+    Project 4
+    IPv4/IPv6: {pythonObject['ip']}
+    City: {pythonObject['city']}
+    Region: {pythonObject['region_name']}
+    Country: {pythonObject['country_name']}""")
+label.pack(pady=20)
+
+
+#Render the app
+root.mainloop()
+
