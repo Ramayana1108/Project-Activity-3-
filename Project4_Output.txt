@@ -1,5 +1,0 @@
-
-    IPv4/IPv6: 180.191.69.22
-    City: Taytay
-    Region: Calabarzon
-    Country: Philippines

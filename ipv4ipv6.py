@@ -29,7 +29,7 @@ print(f"""
 
 ########################################################### Backlog 1 ###########################################################################################################################
 #Creating a text file with a write function
-file = open("Project4_Output.txt","w")
+file = open("ipOutput.txt", "w")
 
 #Writing text file with the output
 file.write(f"""
