@@ -27,40 +27,40 @@ print(f"""
     Region: {pythonObject['region_name']}
     Country: {pythonObject['country_name']}""")
 
-########################################################### Backlog 1 ###########################################################################################################################
-#Creating a text file with a write function
+
+# Backlog: save output into text file
+# Creating a text file with a write function
 file = open("ipOutput.txt", "w")
 
-#Writing text file with the output
-file.write(f"""
-    IPv4/IPv6: {pythonObject['ip']}
-    City: {pythonObject['city']}
-    Region: {pythonObject['region_name']}
-    Country: {pythonObject['country_name']}""")
+# Writing text file with the output
+file.write(
+f"""IPv4/IPv6: {pythonObject['ip']}
+City: {pythonObject['city']}
+Region: {pythonObject['region_name']}
+Country: {pythonObject['country_name']}""")
 file.close()
 
-########################################################### Backlog 2 ###########################################################################################################################
 
-
-#Creating the window
+# Backlog: Display user requested data
+# Creating the window
 root = Tk()
-root.title('Project 4')
+root.title('DEVASC Project')
 
-#Height and Width of the app
-app_width =500
+# Height and Width of the app
+app_width = 500
 app_height = 500
 
-#Finding the center of user screen
+# Finding the center of user screen
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 x = (screen_width/2) - (app_width/2)
-y= (screen_height/2) - (app_height/2)
+y = (screen_height/2) - (app_height/2)
 
 
 root.geometry(f'{app_width}x{app_height}+{int(x)}+{int(y)}')
 
 
-#Text shown
+# Text shown
 label = Label(root, text=f"""
     Project 4
     IPv4/IPv6: {pythonObject['ip']}
@@ -70,6 +70,6 @@ label = Label(root, text=f"""
 label.pack(pady=20)
 
 
-#Render the app
+# Render the app
 root.mainloop()
 
