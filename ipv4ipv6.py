@@ -5,8 +5,6 @@ from requests import get
 # JSON encoder and decoder information here: https://docs.python.org/3/library/json.html
 import json
 
-# tkinter used to display a window screen
-from tkinter import *
 
 # IPAPI documentation: https://ipapi.com/documentation
 apiUrl = get(f"http://api.ipapi.com/check?access_key={apiKey}&fields={fieldsResponse}")
@@ -21,55 +19,98 @@ pythonObject = json.loads(responseString)
 
 # Multiline f-string print the value of the ip/city/region/country field. 
 # Read more here: https://docs.python.org/3/whatsnew/3.6.html#whatsnew36-pep498 and https://stackoverflow.com/questions/10112614/how-do-i-create-a-multiline-python-string-with-inline-variables
-print(f"""
-    IPv4/IPv6: {pythonObject['ip']}
-    City: {pythonObject['city']}
-    Region: {pythonObject['region_name']}
-    Country: {pythonObject['country_name']}""")
-
 
 # Backlog: save output into text file
-# Creating a text file with a write function
-file = open("ipOutput.txt", "w")
-
-# Writing text file with the output
-file.write(
+def saveToText():
+    while True:
+        saveOutput = input("\nSave output? [Y/N] (overwrite): ")
+        if saveOutput == "Y" or saveOutput == "y":
+            # Creating a text file with a write function
+            file = open("ipOutput.txt", "w")
+            match integerInput:
+                case 1:
+                    # Writing text file with the output
+                    file.write(
+                    f"""IPv4/IPv6: {pythonObject['ip']}""")
+                    file.close()
+                    print("Output saved as ipOutput.txt")
+                    break
+                case 2:
+                    file.write(
+                    f"""City: {pythonObject['city']}""")
+                    file.close()
+                    print("Output saved as ipOutput.txt")
+                    break
+                case 3:
+                    file.write(
+                    f"""Region: {pythonObject['region_name']}""")
+                    file.close()
+                    print("Output saved as ipOutput.txt")
+                    break
+                case 4:
+                    file.write(
+                    f"""Country: {pythonObject['country_name']}""")
+                    file.close()
+                    print("Output saved as ipOutput.txt")
+                    break
+                case _:
+                    file.write(
 f"""IPv4/IPv6: {pythonObject['ip']}
 City: {pythonObject['city']}
 Region: {pythonObject['region_name']}
 Country: {pythonObject['country_name']}""")
-file.close()
-
+                    file.close()
+                    print("Output saved as ipOutput.txt")
+                    break
+        else:
+            print("Exited application.")
+            break
 
 # Backlog: Display user requested data
-# Creating the window
-root = Tk()
-root.title('DEVASC Project')
+print(f"""
+    [ 1 ] IPv4/IPv6
+    [ 2 ] City
+    [ 3 ] Region
+    [ 4 ] Country
+    [ 5 ] Print all of the above \n""")
 
-# Height and Width of the app
-app_width = 500
-app_height = 500
+# A singleDigitInput() function to check for the integer input
+def singleDigitInput():
+    while True:
+        integerInput = input("Enter an integer: ")
+        if not integerInput.isnumeric():
+            print("Please enter a single digit integer only. \n")
+            continue
+        integerInput = int(integerInput)
+        if integerInput <= 5 and integerInput >= 1:
+            return integerInput
+        else:
+            print("Value of integer is not a valid input, please try again. \n")
 
-# Finding the center of user screen
-screen_width = root.winfo_screenwidth()
-screen_height = root.winfo_screenheight()
-x = (screen_width/2) - (app_width/2)
-y = (screen_height/2) - (app_height/2)
+# Call for the single digit integer input to determine the output
+integerInput = singleDigitInput()
 
-
-root.geometry(f'{app_width}x{app_height}+{int(x)}+{int(y)}')
-
-
-# Text shown
-label = Label(root, text=f"""
-    Project 4
+match integerInput:
+    case 1:
+        print(f"""
+    IPv4/IPv6: {pythonObject['ip']}""")
+        saveOutput = saveToText()
+    case 2:
+        print(f"""
+    City: {pythonObject['city']}""")
+        saveOutput = saveToText()
+    case 3:
+        print(f"""
+    Region: {pythonObject['region_name']}""")
+        saveOutput = saveToText()
+    case 4:
+        print(f"""
+    Country: {pythonObject['country_name']}""")
+        saveOutput = saveToText()
+    case _:
+        print(f"""
     IPv4/IPv6: {pythonObject['ip']}
     City: {pythonObject['city']}
     Region: {pythonObject['region_name']}
     Country: {pythonObject['country_name']}""")
-label.pack(pady=20)
-
-
-# Render the app
-root.mainloop()
-
+        saveOutput = saveToText()
