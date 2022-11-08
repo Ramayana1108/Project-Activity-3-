@@ -36,6 +36,6 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pip install pytest
-        export PYTHONPATH=src
         pytest
+    - name: execute python script
+      run: python3 ipv4ipv6.py
